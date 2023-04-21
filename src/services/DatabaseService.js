@@ -1,4 +1,3 @@
-import { cloudService } from './CloudService';
 import {
   addDoc,
   collection,
@@ -9,6 +8,7 @@ import {
   updateDoc,
   deleteDoc,
 } from 'firebase/firestore';
+import { cloudService } from './CloudService';
 
 class DatabaseService {
   constructor() {
@@ -38,7 +38,7 @@ class DatabaseService {
   }
 
   deleteDocument(collectionKey, id) {
-    const document = doc(this._database, collectionKey, id);
+    const document = doc(this.database, collectionKey, id);
     return deleteDoc(document);
   }
 }

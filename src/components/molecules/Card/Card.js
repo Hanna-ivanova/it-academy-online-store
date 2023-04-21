@@ -1,5 +1,7 @@
+import { APP_EVENTS } from '../../../constants/appEvents';
 import { APP_STORAGE_KEYS } from '../../../constants/appStorageKeys';
 import { Component } from '../../../core/Component';
+import { eventEmmiter } from '../../../core/EventEmmiter';
 import { storageService } from '../../../services/StorageService';
 import './card.scss';
 
@@ -12,6 +14,9 @@ class Card extends Component {
     if (evt.target.closest('.btn')) {
       const allItems = storageService.getItem(APP_STORAGE_KEYS.cartData) ?? [];
       storageService.setItem(APP_STORAGE_KEYS.cartData, [...allItems, this.props]);
+    }
+    if (evt.target.closest('.card')) {
+      eventEmmiter.emit(APP_EVENTS.changeRoute, { target: `catalog/${this.props.id}` });
     }
   };
 

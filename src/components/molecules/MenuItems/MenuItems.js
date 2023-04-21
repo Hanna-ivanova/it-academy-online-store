@@ -1,6 +1,6 @@
 import { Component } from '../../../core/Component';
-import '../../atoms/Link';
 import '../../../core/Router/Link';
+import '../../atoms/Link';
 
 class MenuItems extends Component {
   static get observedAttributes() {
@@ -25,12 +25,12 @@ class MenuItems extends Component {
           .map((item) => {
             return `
               <li class="nav-item">
-              <route-link to="${item.href}">
-                <it-link 
-                  class="${this.isActive(item) ? 'active' : ''}"
-                  href="${item.href ? item.href : ''}"
-                  content="${item.label}"
-                ></it-link>
+                <route-link to="${item.href}">
+                  <it-link 
+                    class="${this.isActive(item) ? 'active' : ''}"
+                    href="${item.href ? item.href : ''}"
+                    content="${item.label}"
+                  ></it-link>
                 </route-link>
               </li>
             `;

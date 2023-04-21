@@ -1,8 +1,8 @@
+import { APP_EVENTS } from '../../../constants/appEvents';
 import { APP_STORAGE_KEYS } from '../../../constants/appStorageKeys';
 import { Component } from '../../../core/Component';
-import { storageService } from '../../../services/StorageService';
 import { eventEmmiter } from '../../../core/EventEmmiter';
-import { APP_EVENTS } from '../../../constants/appEvents';
+import { storageService } from '../../../services/StorageService';
 
 class CartPage extends Component {
   constructor() {
@@ -65,47 +65,65 @@ class CartPage extends Component {
   }
 
   componentWillUnmount() {
-    this.removeEventListener('click', this.onDeleteItem);
     eventEmmiter.off(APP_EVENTS.storage, this.onStorage);
   }
+
+// sum(products) {
+//   // return products.reduce((acc, item) => {
+//   //   return item.quantity ? += item.price * 
+//   })
+// }
+
+
   render() {
     return `
-            <div class="container">
-            <table class="table mt-3">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Title</th>
-              <th scope="col">Preview</th>
-              <th scope="col">Description</th>
-              <th scope="col">Price</th>
-              <th scope="col">Quantity</th>
-            </tr>
-          </thead>
-          <tbody>            
-            ${this.state.products
-              .map((item, index) => {
-                return `
+      <div class="container">
+        <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${this.state.products
+            .map((item, index) => {
+              return `
               <tr>
-              <td>${index + 1}</td>
-              <td>${item.title}</td>
-              <td>
-                <img class="image-fit" src="${item.image}" />
-              </td>
-              <td>${item.description}</td>
-              <td>${item.price}</td>
-              <td>${item.quantity}</td>
-              <td>
-                <button class='btn btn-danger' data-id="${item.id}">Delete</button>
-              </td>
-            </tr>
+                <td>${index + 1}</td>
+                <td>${item.title}</td>
+                <td>
+                  <img
+                    class="image-fit"
+                    src="${item.image}"
+                    alt="image"
+                  />
+                </td>
+                <td>${item.description}</td>
+                <td>${item.price} BYN</td>
+                <td>${item.quantity}</td>
+                <td>
+                  <button class="btn btn-danger" data-id="${item.id}">Delete</button>
+                </td>
+              </tr>
             `;
-              })
-              .join(' ')}            
-          </tbody>
-        </table>
-            </div>
-        `;
+            })
+            .join(' ')}
+        </tbody>
+        <tfooter>
+        <tr>
+            <td>рмо</td>
+            <td colspan="5">${new Intl.NumberFormat}</td>
+        </tr>
+        
+        </tfooter>
+      </table>
+      </div>  
+      `;
   }
 }
 

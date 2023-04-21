@@ -1,8 +1,9 @@
 import { initializeApp } from 'firebase/app';
-export class CloudService {
+
+class CloudService {
   constructor() {
     this._config = {
-      apiKey: process.env.API_KEY,
+      apiKey: 'AIzaSyBSBzmKa0VmWUPQDlzB52sRs-RimhsQFpk',
       authDomain: 'it-shop-83974.firebaseapp.com',
       projectId: 'it-shop-83974',
       storageBucket: 'it-shop-83974.appspot.com',

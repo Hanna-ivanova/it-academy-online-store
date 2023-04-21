@@ -7,7 +7,7 @@ export class Component extends HTMLElement {
   }
 
   setState(callback) {
-    this.state = callback();
+    this.state = callback(this.state);
     if (this.isShadow) {
       this.shadowRoot.innerHTML = this.render();
     } else {

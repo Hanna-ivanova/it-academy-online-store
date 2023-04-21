@@ -21,12 +21,24 @@ export const routes = {
     href: APP_ROUTES.product,
     component: 'product-page',
   },
-  error: {
-    href: '*',
-    component: 'error-page',
-  },
   admin: {
     href: APP_ROUTES.admin,
     component: 'admin-page',
+  },
+  signUp: {
+    href: APP_ROUTES.signUp,
+    component: 'sign-up-page',
+  },
+  signIn: {
+    href: APP_ROUTES.signIn,
+    component: 'sign-in-page',
+  },
+  signOut: {
+    href: APP_ROUTES.signOut,
+    component: 'sign-out-page',
+  },
+  error: {
+    href: '*',
+    component: 'error-page',
   },
 };

@@ -9,7 +9,7 @@ export class Link extends Component {
   }
 
   static get observedAttributes() {
-    return ['to', 'children'];
+    return ['to'];
   }
 
   onClick = (evt) => {
@@ -28,15 +28,15 @@ export class Link extends Component {
   render() {
     return `
     <style>
-    a {
-      text-decoration: none
-    }
+      a {
+        text-decoration: none
+      }
     </style>
-      <a href="${this.props.to}">
-        <slot></slot>
-    </a>
+        <a href="${this.props.to}">
+            <slot></slot>
+        </a>
       `;
   }
 }
 
-customElements.define('router-link', Link);
+customElements.define('route-link', Link);

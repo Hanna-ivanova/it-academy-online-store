@@ -1,5 +1,5 @@
-import { Component } from '../../../core/Component';
-import { ApiService } from '../../ApiService';
+import { Component } from '../../core/Component';
+import { ApiService } from '../../services/ApiService';
 
 class Weather extends Component {
   constructor() {
@@ -26,7 +26,7 @@ class Weather extends Component {
       .get('/forecast', {
         latitude: '52.52',
         longitude: '13.41',
-        current_weather: 'true',
+        current_weather: true,
         hourly: 'temperature_2m,relativehumidity_2m,windspeed_10m',
       })
       .then((data) => {
@@ -39,28 +39,25 @@ class Weather extends Component {
         });
       });
   }
+
   componentDidMount() {
     this.getWeather();
   }
 
   render() {
-    const { weather, isLoading } = this.state;
-    console.log(weather);
+    const { isLoading, weather } = this.state;
+
+    const wheatheStateMap = {
+      0: '🌞',
+      2: '☁️',
+    };
 
     return isLoading
-      ? `
-        <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>`
+      ? 'Loading...'
       : `
-      <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Температура ${weather?.current_weather?.temperature}</h5>
-    <p class="card-text">Время ${weather?.current_weather?.time}</p>
-    <a href="#" class="btn btn-primary"></a>
-  </div>
-</div>
-      `;
+        <h1>Weather ${weather?.current_weather?.temperature}</h1>
+        <p>${wheatheStateMap[weather?.current_weather?.weathercode]}</p>
+    `;
   }
 }
 

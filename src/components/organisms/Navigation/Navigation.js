@@ -2,13 +2,13 @@ import { APP_EVENTS } from '../../../constants/appEvents';
 import { appPages } from '../../../constants/appPages';
 import { APP_ROUTES } from '../../../constants/appRoutes';
 import { APP_STORAGE_KEYS } from '../../../constants/appStorageKeys';
-// import { routes } from '../../../constants/routes';
 import { Component } from '../../../core/Component';
 import { eventEmmiter } from '../../../core/EventEmmiter';
-import '../../molecules/MenuItems';
 import { storageService } from '../../../services/StorageService';
+import '../../molecules/MenuItems';
 import './navigation.scss';
 import '../../../core/Router/Link';
+import { ADMIN } from '../../../constants/userRoles';
 
 class Navigation extends Component {
   constructor() {
@@ -18,9 +18,14 @@ class Navigation extends Component {
     };
   }
 
+  static get observedAttributes() {
+    return ['user'];
+  }
+
   setProductsCount = (count) => {
-    this.setState(() => {
+    this.setState((state) => {
       return {
+        ...state,
         productsCount: count,
       };
     });
@@ -58,19 +63,38 @@ class Navigation extends Component {
     eventEmmiter.off(APP_EVENTS.storage, this.onStorage);
   }
 
+  getItems() {
+    const user = JSON.parse(this.props.user);
+    console.log(user);
+    if (user) {
+      if (user.email === ADMIN) {
+        return appPages.filter((menuItem) => {
+          return [APP_ROUTES.signUp, APP_ROUTES.signIn].every((item) => item !== menuItem.href);
+        });
+      } else {
+        return appPages.filter((menuItem) => {
+          return [APP_ROUTES.signUp, APP_ROUTES.signIn].every((item) => item !== menuItem.href);
+        });
+      }
+    } else {
+      return appPages.filter((menuItem) => {
+        return [APP_ROUTES.signOut, APP_ROUTES.admin].every((item) => item !== menuItem.href);
+      });
+    }
+  }
+
   render() {
     return `
-        <nav class="navbar navbar-expand-lg bg-light" id="BBBB" style >
+        <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
           <div class="collapse navbar-collapse d-flex justify-content-between">
             <menu-items 
-              items='${JSON.stringify(appPages)}'
-              
+              items='${JSON.stringify(this.getItems())}'
             ></menu-items>
             
             <ul class="navbar-nav">
               <li class="nav-item">
-              <router-link to="${APP_ROUTES.cart}">
+              <route-link to="${APP_ROUTES.cart}">
                 <a class="nav-link position-relative" href="#">
                   <img src="./assets/images/icons/cart.svg" alt="cart" width="24" height="24">
                   <span class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger">
@@ -78,7 +102,7 @@ class Navigation extends Component {
                     <span class="visually-hidden">unread messages</span>
                   </span>
                 </a>
-                </router-link>
+                </route-link>
               </li>
             </ul>
           </div>

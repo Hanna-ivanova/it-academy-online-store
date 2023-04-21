@@ -1,0 +1,57 @@
+[debug] [2023-04-21T16:45:23.186Z] ----------------------------------------------------------------------
+[debug] [2023-04-21T16:45:23.189Z] Command:       C:\Program Files\nodejs\node.exe D:\Hanna\Frontend\course2\it-academy-online-store\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-04-21T16:45:23.190Z] CLI Version:   11.25.1
+[debug] [2023-04-21T16:45:23.190Z] Platform:      win32
+[debug] [2023-04-21T16:45:23.190Z] Node Version:  v19.1.0
+[debug] [2023-04-21T16:45:23.191Z] Time:          Fri Apr 21 2023 19:45:23 GMT+0300 (Москва, стандартное время)
+[debug] [2023-04-21T16:45:23.191Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-21T16:45:23.295Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-21T16:45:23.296Z] > authorizing via signed-in user (hanna.ivanovadl@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Hanna\Frontend\course2\it-academy-online-store
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-04-21T16:45:57.697Z] Using project from CLI flag: it-shop-83974
+[debug] [2023-04-21T16:45:57.701Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/it-shop-83974 [none]
+[debug] [2023-04-21T16:45:58.269Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/it-shop-83974 200
+[debug] [2023-04-21T16:45:58.269Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/it-shop-83974 {"projectId":"it-shop-83974","projectNumber":"608649274193","displayName":"IT-Shop","name":"projects/it-shop-83974","resources":{"hostingSite":"it-shop-83974","storageBucket":"it-shop-83974.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_ddd5ea1d-5b21-4a23-85ee-d609629a33de"}
+[info] i  Using project it-shop-83974 (IT-Shop) 
+[info] 
+=== Hosting:github Setup
+[info] 
+[info] i  Detected a .git folder at D:\Hanna\Frontend\course2\it-academy-online-store 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=159348773&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-04-21T16:47:13.942Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2023-04-21T16:47:13.943Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2023-04-21T16:47:14.354Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2023-04-21T16:47:14.354Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2023-04-21T16:47:14.373Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2023-04-21T16:47:15.061Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2023-04-21T16:47:15.062Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"Hanna-ivanova","id":101669502,"node_id":"U_kgDOBg9afg","avatar_url":"https://avatars.githubusercontent.com/u/101669502?v=4","gravatar_id":"","url":"https://api.github.com/users/Hanna-ivanova","html_url":"https://github.com/Hanna-ivanova","followers_url":"https://api.github.com/users/Hanna-ivanova/followers","following_url":"https://api.github.com/users/Hanna-ivanova/following{/other_user}","gists_url":"https://api.github.com/users/Hanna-ivanova/gists{/gist_id}","starred_url":"https://api.github.com/users/Hanna-ivanova/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Hanna-ivanova/subscriptions","organizations_url":"https://api.github.com/users/Hanna-ivanova/orgs","repos_url":"https://api.github.com/users/Hanna-ivanova/repos","events_url":"https://api.github.com/users/Hanna-ivanova/events{/privacy}","received_events_url":"https://api.github.com/users/Hanna-ivanova/received_events","type":"User","site_admin":false,"name":"Hanna Ivanova","company":"IT-Academy","blog":"linkedin.com/in/hanna-ivanova-8a76bb192/","location":"Belarus","email":null,"hireable":null,"bio":"Trainee at IT-Academy. Have HTML5&CSS skills. Right now in the process of JS learning..","twitter_username":null,"public_repos":5,"public_gists":0,"followers":3,"following":4,"created_at":"2022-03-15T19:33:10Z","updated_at":"2023-04-19T15:43:29Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":11556,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as Hanna-ivanova 
+[info] 
